@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/raw
+      md5: 8c4ae7c2f53adc246c2d64dc8e264738.dir
+      size: 100951
+      nfiles: 1
+    - path: src/prepare.py
+      md5: 96ec5cb26b06c5318437729a8048cf03
+      size: 1093
+    params:
+      params.yaml:
+        prepare:
+          raw: data/raw
+          processed: data/processed
+          dataset_name: winequality-red.csv
+          test: 1
+    outs:
+    - path: data/processed
+      md5: e0d7884cf3177f53ea47929e056293ae.dir
+      size: 93485
+      nfiles: 1

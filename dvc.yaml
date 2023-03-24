@@ -5,6 +5,6 @@ stages:
       - src/prepare.py
       - data/raw
     params:
-      - paths
+      - prepare
     outs:
       - data/processed
