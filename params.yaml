@@ -1,0 +1,8 @@
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  dataset_name: wine-quality-red.csv
+
+  raw_dataset: ${paths.raw}/${paths.dataset_name}
+  processed_dataset: ${paths.processed}/${paths.dataset_name}
