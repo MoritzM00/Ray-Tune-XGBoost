@@ -1,7 +1,6 @@
 # Hyper-parameter optimization of a XGBoost Model with Ray Tune
 
-![Tests](https://img.shields.io/github/actions/workflow/status/MoritzM00/Ray-Tune-XGBoost/test.yaml?style=for-the-badge&label=Tests)
-![Docs](https://img.shields.io/github/actions/workflow/status/MoritzM00/Ray-Tune-XGBoost/deploy_docs.yaml?style=for-the-badge&label=Docs)
+![Tests](https://img.shields.io/github/actions/workflow/status/MoritzM00/Ray-Tune-XGBoost/test_deploy.yaml?style=for-the-badge&label=Test%20and%20Deploy)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)][pre-commit]
 [![Black](https://img.shields.io/static/v1?label=code%20style&message=black&color=black&style=for-the-badge)][black]
 ![License](https://img.shields.io/github/license/MoritzM00/Ray-Tune-XGBoost?style=for-the-badge)
