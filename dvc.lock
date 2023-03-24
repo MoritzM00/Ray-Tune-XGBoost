@@ -16,7 +16,6 @@ stages:
           raw: data/raw
           processed: data/processed
           dataset_name: winequality-red.csv
-          test: 1
     outs:
     - path: data/processed
       md5: e0d7884cf3177f53ea47929e056293ae.dir
