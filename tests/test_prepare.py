@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 
-from src.preprocess import save_data
+from src.prepare import save_data
 
 
 def test_save_data():
