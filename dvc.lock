@@ -8,8 +8,8 @@ stages:
       size: 100951
       nfiles: 1
     - path: src/prepare.py
-      md5: 5a8911aa33ebdb8a4af049c34100b85d
-      size: 527
+      md5: 101cf25112553017084025f6d0acbe1c
+      size: 503
     params:
       params.yaml:
         prepare:
@@ -20,4 +20,49 @@ stages:
     - path: data/processed
       md5: e0d7884cf3177f53ea47929e056293ae.dir
       size: 93485
+      nfiles: 1
+  tune:
+    cmd: python src/tune.py
+    deps:
+    - path: data/processed
+      md5: e0d7884cf3177f53ea47929e056293ae.dir
+      size: 93485
+      nfiles: 1
+    - path: src/tune.py
+      md5: 86cbc0811bab4311a9f5c971fba3dca2
+      size: 3840
+    params:
+      params.yaml:
+        prepare.processed: data/processed
+        tune:
+          model_name: xgboost_best_model.json
+          models: models/
+          hyperparams:
+            objective: multi:softprob
+            eval_metric: mlogloss
+            tree_method: hist
+            early_stopping_rounds: 20
+            n_estimators:
+              type: int
+              lower: 200
+              upper: 600
+          tune_config:
+            num_samples: 2
+            metric: loss
+            mode: min
+          scheduler:
+            type: ASHAScheduler
+            grace_period: 10
+            reduction_factor: 3
+          search_alg: OptunaSearch
+    outs:
+    - path: eval/metrics.json
+      md5: ac62259440e71850a3a91e82f3aa3428
+      size: 27
+    - path: eval/params.json
+      md5: cc0db43e88581d087dd00e7f89c6dd2f
+      size: 330
+    - path: models
+      md5: 235334dc58eb1d24030456805915628a.dir
+      size: 2666538
       nfiles: 1

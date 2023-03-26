@@ -1,5 +1,6 @@
 """Tune the model parameters."""
 import json
+from pathlib import Path
 
 import yaml
 from ray import tune
@@ -97,12 +98,19 @@ def run_tune(config: dict):
     )
     results = tuner.fit()
     best_params = results.get_best_result("loss", mode="min").config
-    json.dump(best_params, "eval/params.json")
+
+    eval_dir = Path("eval")
+    eval_dir.mkdir(exist_ok=True)
+    json.dump(best_params, open("eval/params.json", "w"), indent=4)
 
     clf = XGBClassifier(**best_params).fit(
         X_train, y_train, eval_set=[(X_test, y_test)], verbose=50
     )
+    models_dir = Path("models")
+    models_dir.mkdir(exist_ok=True)
     clf.save_model(get_model_path(config))
+    acc = clf.score(X_test, y_test)
+    json.dump({"accuracy": acc}, open("eval/metrics.json", "w"), indent=4)
 
 
 if __name__ == "__main__":

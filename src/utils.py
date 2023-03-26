@@ -66,7 +66,9 @@ def get_model_path(config: dict):
     model_path : pathlib.Path
         Path to the model.
     """
-    return Path(config["models"], config["model_name"])
+    dir = Path(config["models"])
+    dir.mkdir(exist_ok=True)
+    return Path(dir, config["model_name"])
 
 
 def load_data(raw: bool, config: dict, **kwargs):
