@@ -1,5 +1,30 @@
-
 prepare:
   raw: data/raw
   processed: data/processed
   dataset_name: winequality-red.csv
+
+train:
+  model_name: xgboost_best_model.json
+  model_path: models/
+
+  hyperparams:
+    objective: multi:softprob
+    eval_metric: mlogloss
+    tree_method: hist
+    early_stopping_rounds: 20
+    n_estimators:
+      type: int
+      lower: 200
+      upper: 600
+
+  tune_config:
+    num_samples: 500
+    metric: loss
+    mode: min
+
+  scheduler:
+    type: ASHAScheduler
+    grace_period: 10
+    reduction_factor: 3
+
+  search_alg: OptunaSearch

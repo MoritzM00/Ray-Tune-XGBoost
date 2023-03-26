@@ -1,53 +1,22 @@
 """Preprocess step in the pipeline."""
-import os
 from pathlib import Path
 
-import pandas as pd
 import yaml
 
-
-def load_wine_dataset(path: str):
-    """Load the wine quality dataset.
-
-    Parameters
-    ----------
-    path : str
-        Path to the data.
-
-    Returns
-    -------
-    data : pd.DataFrame
-        Dataframe containing the data.
-    """
-    return pd.read_csv(path)
+from src.utils import get_processed_data_path, load_data
 
 
-def save_data(data: pd.DataFrame, path: str) -> None:
-    """Save the data to disk.
-
-    Parameters
-    ----------
-    data : pd.DataFrame
-        Dataframe containing the data.
-    """
-    data.to_csv(path, index=False)
-
-
-def preprocess(params):
+def preprocess(config):
     """Preprocess the data."""
-    print(params)
+    wines = load_data(raw=True, config=config)
 
-    raw_path = Path(params["raw"], params["dataset_name"])
-    processed_path = Path(params["processed"], params["dataset_name"])
-    wines = load_wine_dataset(raw_path)
-
-    target = "quality"  # params.yaml
+    target = "quality"
     wines[target] -= 3
 
-    os.mkdir(params["processed"])
-    save_data(wines, processed_path)
+    Path(config["processed"]).mkdir(parents=True, exist_ok=True)
+    wines.to_csv(get_processed_data_path(config), index=False)
 
 
 if __name__ == "__main__":
-    params = yaml.safe_load(open("params.yaml"))["prepare"]
-    preprocess(params)
+    config = yaml.safe_load(open("params.yaml"))["prepare"]
+    preprocess(config)
