@@ -20,6 +20,9 @@ docs_view:
 docs_save:
 	poetry run pdoc src -f -o docs
 
+show_tensorboard_logs:
+	poetry run tensorboard --logdir=logs/tune-xgboost
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete

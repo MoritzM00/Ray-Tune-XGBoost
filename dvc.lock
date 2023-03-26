@@ -29,8 +29,8 @@ stages:
       size: 93485
       nfiles: 1
     - path: src/tune.py
-      md5: ed46ee46cc4cdbe41e67e4d3e2a99867
-      size: 3991
+      md5: 94310e32441639f0ec5f738ed095ba3e
+      size: 4087
     params:
       params.yaml:
         prepare.processed: data/processed
@@ -47,7 +47,7 @@ stages:
               lower: 200
               upper: 600
           tune_config:
-            num_samples: 10
+            num_samples: 50
             metric: loss
             mode: min
           scheduler:
@@ -57,15 +57,15 @@ stages:
           search_alg: OptunaSearch
     outs:
     - path: eval/losses.csv
-      md5: cca9d7ec8a49f6b8b976368132dfba1a
-      size: 2193
+      md5: fc20e0510c2a4b4f4ebae4ec05f12450
+      size: 2191
     - path: eval/metrics.json
-      md5: d883d3a4cc9dddb29de51edbbe9cd636
-      size: 24
+      md5: 9f8ea79063787ea9ff5fa18111013173
+      size: 28
     - path: eval/params.json
-      md5: 581e7c5247d365b7fe71f9e79bd0c07b
-      size: 328
+      md5: fd31f29f2e51993565941f358f431592
+      size: 329
     - path: models
-      md5: 5cbc0f320500f8c06ca12a60abc67922.dir
-      size: 715370
+      md5: fc4f0aec253caf7a6424b73e163ae2f6.dir
+      size: 621025
       nfiles: 1

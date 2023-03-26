@@ -132,3 +132,4 @@ docs/
 models/
 /models
 dvc_plots/
+logs/

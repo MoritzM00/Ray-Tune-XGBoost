@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 
+import ray.air as air
 import yaml
 from ray import tune
 from ray.tune.integration.xgboost import TuneReportCallback
@@ -95,6 +96,7 @@ def run_tune(config: dict):
             scheduler=scheduler,
             search_alg=search_alg,
         ),
+        run_config=air.RunConfig(local_dir="logs/", name="tune-xgboost"),
     )
     results = tuner.fit()
     best_result = results.get_best_result("loss", mode="min")
