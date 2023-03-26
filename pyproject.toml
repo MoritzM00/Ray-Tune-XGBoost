@@ -8,6 +8,9 @@ documentation = "https://MoritzM00.github.io/Ray-Tune-XGBoost"
 repository = "https://github.com/MoritzM00/Ray-Tune-XGBoost"
 license = "MIT"
 keywords = ["Python", "Poetry"]
+packages = [
+    { include = "src" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
