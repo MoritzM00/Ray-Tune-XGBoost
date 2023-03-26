@@ -1,4 +1,6 @@
 """Tune the model parameters."""
+import json
+
 import yaml
 from ray import tune
 from ray.tune.integration.xgboost import TuneReportCallback
@@ -95,11 +97,11 @@ def run_tune(config: dict):
     )
     results = tuner.fit()
     best_params = results.get_best_result("loss", mode="min").config
-    print(best_params)
+    json.dump(best_params, "eval/params.json")
+
     clf = XGBClassifier(**best_params).fit(
         X_train, y_train, eval_set=[(X_test, y_test)], verbose=50
     )
-    print(clf.score(X_test, y_test))
     clf.save_model(get_model_path(config))
 
 

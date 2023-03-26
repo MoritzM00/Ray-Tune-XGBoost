@@ -8,3 +8,15 @@ stages:
       - prepare
     outs:
       - data/processed
+  tune:
+    cmd: python src/tune.py
+    deps:
+      - src/tune.py
+      - data/processed
+    params:
+      - tune
+      - prepare.processed
+    outs:
+      - models
+      - eval/metrics.json
+      - eval/params.json
