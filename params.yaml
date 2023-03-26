@@ -3,9 +3,9 @@ prepare:
   processed: data/processed
   dataset_name: winequality-red.csv
 
-train:
+tune:
   model_name: xgboost_best_model.json
-  model_path: models/
+  models: models/
 
   hyperparams:
     objective: multi:softprob
@@ -18,7 +18,7 @@ train:
       upper: 600
 
   tune_config:
-    num_samples: 500
+    num_samples: 2
     metric: loss
     mode: min
 

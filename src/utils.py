@@ -2,6 +2,23 @@
 from pathlib import Path
 
 import pandas as pd
+import yaml
+
+
+def load_config(stage: str) -> dict:
+    """Load the configuration file.
+
+    Parameters
+    ----------
+    stage : str
+        Stage of the pipeline.
+
+    Returns
+    -------
+    config : Dict
+        Configuration dictionary.
+    """
+    return yaml.safe_load(open("params.yaml"))[stage]
 
 
 def get_raw_data_path(config: dict) -> str:
@@ -34,6 +51,22 @@ def get_processed_data_path(config: dict):
         Path to the processed data.
     """
     return Path(config["processed"], config["dataset_name"])
+
+
+def get_model_path(config: dict):
+    """Get the path to the model.
+
+    Parameters
+    ----------
+    config : Dict
+        Configuration dictionary.
+
+    Returns
+    -------
+    model_path : pathlib.Path
+        Path to the model.
+    """
+    return Path(config["models"], config["model_name"])
 
 
 def load_data(raw: bool, config: dict, **kwargs):

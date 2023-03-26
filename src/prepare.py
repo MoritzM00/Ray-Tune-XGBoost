@@ -1,9 +1,7 @@
 """Preprocess step in the pipeline."""
 from pathlib import Path
 
-import yaml
-
-from src.utils import get_processed_data_path, load_data
+from src.utils import get_processed_data_path, load_config, load_data
 
 
 def preprocess(config):
@@ -18,5 +16,5 @@ def preprocess(config):
 
 
 if __name__ == "__main__":
-    config = yaml.safe_load(open("params.yaml"))["prepare"]
+    config = load_config("prepare")
     preprocess(config)
