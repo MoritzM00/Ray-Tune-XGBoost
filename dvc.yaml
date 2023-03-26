@@ -20,3 +20,8 @@ stages:
       - models
       - eval/metrics.json
       - eval/params.json
+    plots:
+      - eval/losses.csv:
+          x: training_iteration
+          y: loss
+          title: Loss vs. Training Iteration

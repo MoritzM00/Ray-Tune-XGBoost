@@ -29,8 +29,8 @@ stages:
       size: 93485
       nfiles: 1
     - path: src/tune.py
-      md5: 86cbc0811bab4311a9f5c971fba3dca2
-      size: 3840
+      md5: ed46ee46cc4cdbe41e67e4d3e2a99867
+      size: 3991
     params:
       params.yaml:
         prepare.processed: data/processed
@@ -56,13 +56,16 @@ stages:
             reduction_factor: 3
           search_alg: OptunaSearch
     outs:
+    - path: eval/losses.csv
+      md5: 60352a79668b05b55379ee6e6d1fef1b
+      size: 2182
     - path: eval/metrics.json
-      md5: ac62259440e71850a3a91e82f3aa3428
-      size: 27
+      md5: d883d3a4cc9dddb29de51edbbe9cd636
+      size: 24
     - path: eval/params.json
-      md5: cc0db43e88581d087dd00e7f89c6dd2f
-      size: 330
+      md5: 25ec6894e762260c12dd69b49b927517
+      size: 329
     - path: models
-      md5: 235334dc58eb1d24030456805915628a.dir
-      size: 2666538
+      md5: de3a2eee84b0df27f259beca5ab9b79b.dir
+      size: 1750919
       nfiles: 1

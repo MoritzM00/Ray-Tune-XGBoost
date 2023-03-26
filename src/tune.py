@@ -97,7 +97,12 @@ def run_tune(config: dict):
         ),
     )
     results = tuner.fit()
-    best_params = results.get_best_result("loss", mode="min").config
+    best_result = results.get_best_result("loss", mode="min")
+    best_params = best_result.config
+
+    best_result.metrics_dataframe[["training_iteration", "loss"]].to_csv(
+        "eval/losses.csv", index=False
+    )
 
     eval_dir = Path("eval")
     eval_dir.mkdir(exist_ok=True)
@@ -109,6 +114,7 @@ def run_tune(config: dict):
     models_dir = Path("models")
     models_dir.mkdir(exist_ok=True)
     clf.save_model(get_model_path(config))
+
     acc = clf.score(X_test, y_test)
     json.dump({"accuracy": acc}, open("eval/metrics.json", "w"), indent=4)
 
