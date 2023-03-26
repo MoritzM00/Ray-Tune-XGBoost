@@ -8,8 +8,8 @@ stages:
       size: 100951
       nfiles: 1
     - path: src/prepare.py
-      md5: 96ec5cb26b06c5318437729a8048cf03
-      size: 1093
+      md5: 5a8911aa33ebdb8a4af049c34100b85d
+      size: 527
     params:
       params.yaml:
         prepare:
