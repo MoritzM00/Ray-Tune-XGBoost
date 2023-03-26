@@ -18,7 +18,7 @@ tune:
       upper: 600
 
   tune_config:
-    num_samples: 2
+    num_samples: 10
     metric: loss
     mode: min
 

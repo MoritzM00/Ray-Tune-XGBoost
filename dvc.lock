@@ -47,7 +47,7 @@ stages:
               lower: 200
               upper: 600
           tune_config:
-            num_samples: 2
+            num_samples: 10
             metric: loss
             mode: min
           scheduler:
@@ -57,15 +57,15 @@ stages:
           search_alg: OptunaSearch
     outs:
     - path: eval/losses.csv
-      md5: 60352a79668b05b55379ee6e6d1fef1b
-      size: 2182
+      md5: cca9d7ec8a49f6b8b976368132dfba1a
+      size: 2193
     - path: eval/metrics.json
       md5: d883d3a4cc9dddb29de51edbbe9cd636
       size: 24
     - path: eval/params.json
-      md5: 25ec6894e762260c12dd69b49b927517
-      size: 329
+      md5: 581e7c5247d365b7fe71f9e79bd0c07b
+      size: 328
     - path: models
-      md5: de3a2eee84b0df27f259beca5ab9b79b.dir
-      size: 1750919
+      md5: 5cbc0f320500f8c06ca12a60abc67922.dir
+      size: 715370
       nfiles: 1

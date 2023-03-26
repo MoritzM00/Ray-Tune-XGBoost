@@ -18,8 +18,9 @@ stages:
       - prepare.processed
     outs:
       - models
-      - eval/metrics.json
       - eval/params.json
+    metrics:
+      - eval/metrics.json
     plots:
       - eval/losses.csv:
           x: training_iteration
