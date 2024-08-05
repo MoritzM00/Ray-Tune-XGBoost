@@ -1,4 +1,5 @@
 """Preprocess step in the pipeline."""
+
 from pathlib import Path
 
 from src.utils import get_processed_data_path, load_config, load_data
